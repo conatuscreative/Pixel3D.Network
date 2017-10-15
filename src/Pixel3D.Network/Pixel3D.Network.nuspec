@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Pixel3D.Network</id>
+    <version>1.0.0</version>
+    <title>Pixel3D.Network</title>
+    <authors>Conatus Creative Inc.</authors>
+    <owners>Conatus Creative Inc.</owners>
+    <licenseUrl>https://github.com/conatuscreative/Pixel3D.Network/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/conatuscreative/Pixel3D.Network</projectUrl>    
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Efficient peer-to-peer, rollback-based networking with host migration for up to 4 players.</description>
+    <releaseNotes>Initial public release</releaseNotes>
+    <copyright>(c) 2017 Conatus Creative Inc.</copyright>
+    <tags>Pixel3D networking xna monogame fna</tags>
+  </metadata>
+</package>
