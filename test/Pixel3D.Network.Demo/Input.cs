@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 
+// Copied from Pixel3D
+
 namespace Common.GlobalInput // Put this in a different namespace so it doesn't get pulled into network-sensitive gameplay state stuff
 {
     [Flags]
@@ -286,7 +288,4 @@ namespace Common.GlobalInput // Put this in a different namespace so it doesn't 
         /// <summary>The last valid value for signal characters</summary>
         Last = 31 // <- useful characters start with space at 32
     }
-
 }
-
-

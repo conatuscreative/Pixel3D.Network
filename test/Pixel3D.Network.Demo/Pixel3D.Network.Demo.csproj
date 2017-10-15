@@ -62,6 +62,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Input.cs" />
     <Compile Include="NetworkDemoGame.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayerInput.cs" />

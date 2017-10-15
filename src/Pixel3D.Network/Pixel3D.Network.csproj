@@ -60,7 +60,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\DisplayText.cs" />
-    <Compile Include="Common\Input.cs" />
     <Compile Include="FilterName.cs" />
     <Compile Include="FixupXNAClock.cs" />
     <Compile Include="Common\FrameworkExtensions\BinaryReadWriteExtensions.cs" />
