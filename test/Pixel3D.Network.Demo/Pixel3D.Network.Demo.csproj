@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{65B8A6B1-A982-42A5-A8D5-F156D82B85DB}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pixel3D.Network.Demo</RootNamespace>
+    <AssemblyName>Pixel3D.Network.Demo</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="NetworkDemoGame.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="PlayerInput.cs" />
+    <Compile Include="SimpleNetworkMenu.cs" />
+    <Compile Include="SquarePlayground.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\FNA\FNA.csproj">
+      <Project>{35253CE1-C864-4CD3-8249-4D1319748E8F}</Project>
+      <Name>FNA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Pixel3D.Network.Rollback.Input\Pixel3D.Network.Rollback.Input.csproj">
+      <Project>{9a3b44b2-c5fc-45a4-915d-8f4b4ad665f8}</Project>
+      <Name>Pixel3D.Network.Rollback.Input</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Pixel3D.Network.Rollback\Pixel3D.Network.Rollback.csproj">
+      <Project>{d8f8ed9d-322a-4832-91a1-d0371da25d74}</Project>
+      <Name>Pixel3D.Network.Rollback</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Pixel3D.Network\Pixel3D.Network.csproj">
+      <Project>{6dbfbd4d-6879-4366-9cd3-a89a2756b765}</Project>
+      <Name>Pixel3D.Network</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Pixel3D.P2P\Pixel3D.P2P.csproj">
+      <Project>{9b577641-709f-4abd-8afb-1a127255ea3e}</Project>
+      <Name>Pixel3D.P2P</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <CompileShader Include="Effects\TestEffect.fx" />
+  </ItemGroup>
+  <ItemGroup>
+    <MonoGameContentReference Include="Content\Content.mgcb" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- Required for MGCB to output sensibly -->
+  <PropertyGroup>
+    <MonoGamePlatform>Windows</MonoGamePlatform>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
+  <Import Project="..\build\BuildShaders.targets" />
+  <Import Project="..\build\CopyFNALibs.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
