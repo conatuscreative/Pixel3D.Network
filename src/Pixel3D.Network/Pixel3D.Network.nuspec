@@ -2,16 +2,22 @@
 <package >
   <metadata>
     <id>Pixel3D.Network</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <title>Pixel3D.Network</title>
     <authors>Conatus Creative Inc.</authors>
     <owners>Conatus Creative Inc.</owners>
     <licenseUrl>https://github.com/conatuscreative/Pixel3D.Network/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/conatuscreative/Pixel3D.Network</projectUrl>    
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>Efficient peer-to-peer, rollback-based networking with host migration for up to 4 players.</description>
     <releaseNotes>Initial public release</releaseNotes>
     <copyright>(c) 2017 Conatus Creative Inc.</copyright>
     <tags>Pixel3D networking xna monogame fna</tags>
   </metadata>
+  <files>
+    <file src="bin\Release\Pixel3D.Network.dll" target="lib\net40" />
+    <file src="..\Pixel3D.Network.Rollback\bin\Release\Pixel3D.Network.Rollback.dll" target="lib\net40" />
+    <file src="..\Pixel3D.Network.Rollback.Input\bin\Release\Pixel3D.Network.Rollback.Input.dll" target="lib\net40" />
+    <file src="..\Pixel3D.P2P\bin\Release\Pixel3D.P2P.dll" target="lib\net40" />
+  </files>
 </package>
