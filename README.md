@@ -24,7 +24,7 @@ Note the Build Actions (see "Import"s in the .csproj)
 - MonoGameContentBuild
 - CompileShader
 
-fxc.exe should live in 'build\tools'
+fxc.exe should live in `build\tools`
 
 Note that shaders need to be loaded from fxb files, not through ContentManager (example is provided)
 
