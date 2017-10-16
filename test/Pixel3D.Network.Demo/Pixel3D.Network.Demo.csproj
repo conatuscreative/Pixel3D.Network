@@ -62,7 +62,9 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Input.cs" />
+    <Compile Include="Common\BinaryReadWriteExtensions.cs" />
+    <Compile Include="Common\BinaryReadWriteXNA.cs" />
+    <Compile Include="Common\Input.cs" />
     <Compile Include="NetworkDemoGame.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayerInput.cs" />
@@ -98,6 +100,9 @@
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Common\_README.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- Required for MGCB to output sensibly -->

@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Pixel3D.Network</id>
-    <version>1.0.2</version>
+    <version>1.0.4</version>
     <title>Pixel3D.Network</title>
     <authors>Conatus Creative Inc.</authors>
     <owners>Conatus Creative Inc.</owners>
@@ -19,5 +19,6 @@
     <file src="..\Pixel3D.Network.Rollback\bin\Release\Pixel3D.Network.Rollback.dll" target="lib\net40" />
     <file src="..\Pixel3D.Network.Rollback.Input\bin\Release\Pixel3D.Network.Rollback.Input.dll" target="lib\net40" />
     <file src="..\Pixel3D.P2P\bin\Release\Pixel3D.P2P.dll" target="lib\net40" />
+    <file src="..\Lidgren.Network\bin\Release\Pixel3D.Lidgren.dll" target="lib\net40" />
   </files>
 </package>

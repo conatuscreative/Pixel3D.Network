@@ -62,8 +62,6 @@
     <Compile Include="Common\DisplayText.cs" />
     <Compile Include="FilterName.cs" />
     <Compile Include="FixupXNAClock.cs" />
-    <Compile Include="Common\FrameworkExtensions\BinaryReadWriteExtensions.cs" />
-    <Compile Include="Common\FrameworkExtensions\BinaryReadWriteXNA.cs" />
     <Compile Include="InputMapExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RollbackDebugDisplay.cs" />

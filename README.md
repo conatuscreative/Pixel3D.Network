@@ -5,6 +5,8 @@ Efficient peer-to-peer, rollback-based networking with host migration for up to 
 
 This is the networking stack developed for the Pixel3D engine during production of River City Ransom: Underground.
 
+The Pixel3D engine itself is not required to use this library.
+
 Installation
 ============
 
