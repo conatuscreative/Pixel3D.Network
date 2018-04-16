@@ -69,9 +69,9 @@
     <Compile Include="SimpleConsoleWriter.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\FNA\FNA.csproj">
-      <Project>{35253ce1-c864-4cd3-8249-4d1319748e8f}</Project>
-      <Name>FNA</Name>
+    <ProjectReference Include="..\..\..\FNA\FNA.Core.csproj">
+      <Project>{92a31987-0984-4976-9a60-d2358630f408}</Project>
+      <Name>FNA.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Pixel3D.Network.Rollback.Input\Pixel3D.Network.Rollback.Input.csproj">
       <Project>{9a3b44b2-c5fc-45a4-915d-8f4b4ad665f8}</Project>

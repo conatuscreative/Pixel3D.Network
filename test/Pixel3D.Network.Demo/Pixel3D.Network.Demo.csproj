@@ -74,9 +74,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\FNA\FNA.csproj">
-      <Project>{35253CE1-C864-4CD3-8249-4D1319748E8F}</Project>
-      <Name>FNA</Name>
+    <ProjectReference Include="..\..\..\FNA\FNA.Core.csproj">
+      <Project>{f3e50046-481c-4b6f-87b3-4a20cc5cc1ee}</Project>
+      <Name>FNA.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\Pixel3D.Network.Rollback.Input\Pixel3D.Network.Rollback.Input.csproj">
       <Project>{9a3b44b2-c5fc-45a4-915d-8f4b4ad665f8}</Project>
