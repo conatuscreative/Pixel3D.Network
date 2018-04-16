@@ -1,1 +1,0 @@
-"c:\nuget.exe" push Pixel3D.Network.1.0.4.nupkg -Source https://www.nuget.org/api/v2/package

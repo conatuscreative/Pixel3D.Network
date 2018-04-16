@@ -79,19 +79,19 @@
       <Name>FNA.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\Pixel3D.Network.Rollback.Input\Pixel3D.Network.Rollback.Input.csproj">
-      <Project>{9a3b44b2-c5fc-45a4-915d-8f4b4ad665f8}</Project>
+      <Project>{c68994df-9643-45d0-ac7f-e6bd5e6d3de7}</Project>
       <Name>Pixel3D.Network.Rollback.Input</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\Pixel3D.Network.Rollback\Pixel3D.Network.Rollback.csproj">
-      <Project>{d8f8ed9d-322a-4832-91a1-d0371da25d74}</Project>
+      <Project>{0e961e02-5342-4e70-9d77-9d377baf811d}</Project>
       <Name>Pixel3D.Network.Rollback</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\Pixel3D.Network\Pixel3D.Network.csproj">
-      <Project>{6dbfbd4d-6879-4366-9cd3-a89a2756b765}</Project>
+      <Project>{9afde48c-d4a3-4322-9b41-0d881d1a49ed}</Project>
       <Name>Pixel3D.Network</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\Pixel3D.P2P\Pixel3D.P2P.csproj">
-      <Project>{9b577641-709f-4abd-8afb-1a127255ea3e}</Project>
+      <Project>{b1eb84cb-16f6-4741-86e9-d0c628ac2947}</Project>
       <Name>Pixel3D.P2P</Name>
     </ProjectReference>
   </ItemGroup>
