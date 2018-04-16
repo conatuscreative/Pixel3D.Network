@@ -82,7 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Lidgren.Network\Lidgren.Network.csproj">
-      <Project>{0535DDEF-C7FF-4CC7-A741-39B9BA7718BD}</Project>
+      <Project>{be141b54-9355-4cea-be0d-bc59f5aae4d0}</Project>
       <Name>Lidgren.Network</Name>
     </ProjectReference>
     <ProjectReference Include="..\Pixel3D.Network.Rollback.Input\Pixel3D.Network.Rollback.Input.csproj">
