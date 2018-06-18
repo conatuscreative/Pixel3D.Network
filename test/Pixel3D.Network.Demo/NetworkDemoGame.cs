@@ -32,7 +32,6 @@ namespace Pixel3D.Network.Demo
 
 
 
-        FixupXNAClock fixupXnaClock;
         SimpleNetworkMenu simpleNetworkMenu;
         SimpleConsole console = new SimpleConsole();
 
@@ -44,8 +43,6 @@ namespace Pixel3D.Network.Demo
         protected override void Initialize()
         {
             base.Initialize();
-
-            fixupXnaClock = new FixupXNAClock(this);
 
             simpleNetworkMenu = new SimpleNetworkMenu(commandLineHost, console, CreateNetwork, CreateRollbackDriverAndGame);
 
@@ -155,7 +152,6 @@ namespace Pixel3D.Network.Demo
 
         protected override void Update(GameTime gameTime)
         {
-            fixupXnaClock.Update();
             Input.Update(IsActive);
 
 
