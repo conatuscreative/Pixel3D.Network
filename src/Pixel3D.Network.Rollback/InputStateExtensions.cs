@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using Lidgren.Network;
-using Pixel3D.Network.Rollback.Input;
 
 namespace Pixel3D.Network.Rollback
 {
@@ -23,6 +22,5 @@ namespace Pixel3D.Network.Rollback
         }
 
         #endregion
-
     }
 }

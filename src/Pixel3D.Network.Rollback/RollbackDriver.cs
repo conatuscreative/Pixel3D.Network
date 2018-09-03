@@ -5,7 +5,6 @@ using System.IO;
 using Pixel3D.Network.P2P;
 using Pixel3D.Network.Rollback;
 using Lidgren.Network;
-using Pixel3D.Network.Rollback.Input;
 using Pixel3D.P2P;
 
 namespace Pixel3D.Network.Rollback
