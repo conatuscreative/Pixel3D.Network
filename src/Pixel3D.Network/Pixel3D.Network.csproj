@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net40</TargetFramework>
+    <TargetFrameworks>net40;netstandard2.0</TargetFrameworks>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageTags>Pixel3D networking xna monogame fna</PackageTags>
@@ -19,7 +19,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\FNA\FNA.csproj" />
     <ProjectReference Include="..\Lidgren.Network\Lidgren.Network.csproj" />
-    <ProjectReference Include="..\Pixel3D.Network.Rollback.Input\Pixel3D.Network.Rollback.Input.csproj" />
     <ProjectReference Include="..\Pixel3D.Network.Rollback\Pixel3D.Network.Rollback.csproj" />
     <ProjectReference Include="..\Pixel3D.P2P\Pixel3D.P2P.csproj" />
   </ItemGroup>

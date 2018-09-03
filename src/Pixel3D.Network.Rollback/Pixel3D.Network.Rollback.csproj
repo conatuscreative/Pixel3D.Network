@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Pixel3D.Network.Rollback.Input\Pixel3D.Network.Rollback.Input.csproj" />
+    <ProjectReference Include="..\..\..\Pixel3D\src\Pixel3D.Common\Pixel3D.Common.csproj" />
     <ProjectReference Include="..\Pixel3D.P2P\Pixel3D.P2P.csproj" />
   </ItemGroup>
 

@@ -78,9 +78,9 @@
       <Project>{35253ce1-c864-4cd3-8249-4d1319748e8f}</Project>
       <Name>FNA</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\Pixel3D.Network.Rollback.Input\Pixel3D.Network.Rollback.Input.csproj">
-      <Project>{c68994df-9643-45d0-ac7f-e6bd5e6d3de7}</Project>
-      <Name>Pixel3D.Network.Rollback.Input</Name>
+    <ProjectReference Include="..\..\..\Pixel3D\src\Pixel3D.Common\Pixel3D.Common.csproj">
+      <Project>{c912e0f4-f7b1-46da-b63b-8cc34698f584}</Project>
+      <Name>Pixel3D.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\Pixel3D.Network.Rollback\Pixel3D.Network.Rollback.csproj">
       <Project>{0e961e02-5342-4e70-9d77-9d377baf811d}</Project>
