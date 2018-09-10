@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework.Input;
 
-namespace Pixel3D.Network.Rollback.Input // Put it in with the InputState struct
+namespace Pixel3D.Network // Put it in with the InputState struct
 {
     public static class NetworkInput
     {

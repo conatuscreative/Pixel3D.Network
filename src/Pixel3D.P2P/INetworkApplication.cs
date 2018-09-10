@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using Pixel3D.Network.P2P;
 using Lidgren.Network;
 
 namespace Pixel3D.P2P

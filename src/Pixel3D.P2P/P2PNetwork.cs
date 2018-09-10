@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using Pixel3D.Network.P2P;
 using Lidgren.Network;
 using Pixel3D.P2P.Diagnostics;
 

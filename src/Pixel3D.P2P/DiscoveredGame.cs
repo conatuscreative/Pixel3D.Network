@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
-using Pixel3D.Network.P2P;
 using Lidgren.Network;
 
 namespace Pixel3D.P2P
