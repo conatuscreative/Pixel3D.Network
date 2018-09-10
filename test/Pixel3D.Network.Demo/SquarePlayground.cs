@@ -4,7 +4,6 @@ using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Pixel3D.Network.Rollback;
-using Pixel3D.Network.Rollback.Input;
 
 namespace Pixel3D.Network.Demo
 {

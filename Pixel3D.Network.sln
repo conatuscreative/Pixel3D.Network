@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Third Party", "Third Party", "{1FE2EC2E-7052-4F0B-85C2-59226534F361}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pixel3D.Network.Demo", "test\Pixel3D.Network.Demo\Pixel3D.Network.Demo.csproj", "{65B8A6B1-A982-42A5-A8D5-F156D82B85DB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F923BB5B-13E4-423E-8833-C21F64CE89F9}"
@@ -24,6 +22,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FNA", "..\FNA\FNA.csproj", "{35253CE1-C864-4CD3-8249-4D1319748E8F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pixel3D.Common", "..\Pixel3D\src\Pixel3D.Common\Pixel3D.Common.csproj", "{C912E0F4-F7B1-46DA-B63B-8CC34698F584}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Design", "Design", "{15FE0EB7-5F5B-488E-A2C5-3863B76EB1F2}"
+	ProjectSection(SolutionItems) = preProject
+		docs\P2P Network.pptx = docs\P2P Network.pptx
+		docs\Rollback Design.pptx = docs\Rollback Design.pptx
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -167,8 +171,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{BE141B54-9355-4CEA-BE0D-BC59F5AAE4D0} = {1FE2EC2E-7052-4F0B-85C2-59226534F361}
-		{35253CE1-C864-4CD3-8249-4D1319748E8F} = {1FE2EC2E-7052-4F0B-85C2-59226534F361}
+		{15FE0EB7-5F5B-488E-A2C5-3863B76EB1F2} = {F923BB5B-13E4-423E-8833-C21F64CE89F9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C80AB695-16A9-4C5A-AC56-25D58EAFBB16}

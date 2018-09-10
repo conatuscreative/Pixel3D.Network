@@ -1,6 +1,5 @@
 ﻿using Common.GlobalInput;
 using Microsoft.Xna.Framework.Input;
-using Pixel3D.Network.Rollback.Input;
 
 namespace Pixel3D.Network.Demo
 {
