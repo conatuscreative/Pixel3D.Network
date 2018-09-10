@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Copyright © Conatus Creative, Inc. All rights reserved.
+// Licensed under the Apache 2.0 License. See LICENSE.md in the project root for license terms.
+
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -7,171 +10,173 @@ using Lidgren.Network;
 
 namespace Pixel3D.P2P
 {
-    public class DiscoveredGame
-    {
-        public GameInfo GameInfo { get; private set; }
+	public class DiscoveredGame
+	{
+		internal const double DiscoveryResponseTimeout = 30; // seconds
 
 
-        /// <summary>The server where the game is being hosted (unique identifier for discovered servers).</summary>
-        public IPEndPoint EndPoint { get; private set; }
+		/// <summary>Arbitrary data provided by the application</summary>
+		public byte[] applicationData;
 
-        private string hostString;
-        public string HostString
-        {
-            get { return hostString ?? (hostString = EndPoint == null ? null : EndPoint.Address.ToString()); }
-        }
+		internal double expireTime;
 
-        internal const double DiscoveryResponseTimeout = 30; // seconds
-        internal double expireTime;
+		private string hostString;
 
-        /// <summary>0 = unknown mismatch, -1 = too old, 1 = too new.</summary>
-        public int? VersionMismatch { get; internal set; }
-
-        public bool IsFull { get; internal set; }
+		private DiscoveredGame()
+		{
+		}
 
 
-        /// <summary>Arbitrary data provided by the application</summary>
-        public byte[] applicationData;
+		/// <param name="messageForTiming">Used only for timing and source data, not read from</param>
+		private DiscoveredGame(NetIncomingMessage messageForTiming)
+		{
+			expireTime = messageForTiming.ReceiveTime + DiscoveryResponseTimeout;
+			EndPoint = messageForTiming.SenderEndPoint;
+			if (EndPoint == null)
+				throw new InvalidOperationException();
+		}
+
+		public GameInfo GameInfo { get; private set; }
 
 
-        public string StatusString
-        {
-            get
-            {
-                if(VersionMismatch.HasValue)
-                {
-                    if(VersionMismatch.GetValueOrDefault() < 0)
-                        return "(version too old)";
-                    else if(VersionMismatch.GetValueOrDefault() > 0)
-                        return "(version too new)";
-                    else
-                        return "(version mismatch)";
-                }
-                else if(IsFull)
-                    return "(full)";
-                else
-                    return string.Empty;
-            }
-        }
+		/// <summary>The server where the game is being hosted (unique identifier for discovered servers).</summary>
+		public IPEndPoint EndPoint { get; private set; }
 
-        public bool CanJoin { get { return !VersionMismatch.HasValue && !IsFull; } }
+		public string HostString => hostString ?? (hostString = EndPoint == null ? null : EndPoint.Address.ToString());
+
+		/// <summary>0 = unknown mismatch, -1 = too old, 1 = too new.</summary>
+		public int? VersionMismatch { get; internal set; }
+
+		public bool IsFull { get; internal set; }
 
 
+		public string StatusString
+		{
+			get
+			{
+				if (VersionMismatch.HasValue)
+				{
+					if (VersionMismatch.GetValueOrDefault() < 0)
+						return "(version too old)";
+					if (VersionMismatch.GetValueOrDefault() > 0)
+						return "(version too new)";
+					return "(version mismatch)";
+				}
 
-        internal void CopyFrom(DiscoveredGame other)
-        {
-            this.GameInfo.CopyFrom(other.GameInfo);
+				if (IsFull)
+					return "(full)";
+				return string.Empty;
+			}
+		}
 
-            this.EndPoint = other.EndPoint;
-            this.expireTime = other.expireTime;
-            this.VersionMismatch = other.VersionMismatch;
-            this.IsFull = other.IsFull;
-            this.applicationData = other.applicationData; // <- assumed to be immutable
-        }
-
-        private DiscoveredGame() { }
-
-        public static DiscoveredGame FakeGame()
-        {
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            var random = new Random();
-            var name = new string(Enumerable.Repeat(chars, 14).Select(s => s[random.Next(s.Length)]).ToArray());
-            var game = new DiscoveredGame();
-            game.GameInfo = new GameInfo(name, false, false);
-            game.EndPoint = new IPEndPoint(IPAddress.Parse("255.255.255.255"), 65535);
-            game.IsFull = true;
-            return game;
-        }
-
-        internal static void WriteDiscoveryResponse(NetworkAppConfig appConfig, NetOutgoingMessage message, GameInfo gameInfo, bool isFull, MemoryStream applicationData)
-        {   
-            // START: Version safe data
-            // {
-            message.Write(appConfig.AppId);
-            message.Write(gameInfo.Name.FilterName());
-            message.Write((UInt16)(appConfig.ApplicationVersion));
-            message.WriteVariableUInt32((UInt32)appConfig.ApplicationSignature.Length);
-            message.Write(appConfig.ApplicationSignature);
-            // }
-            // END: Version safe data
-
-            message.Write(gameInfo.IsInternetGame);
-            message.Write(isFull);
-            message.WriteMemoryStreamAsByteArray(applicationData); // <- fill in for WriteByteArray
-        }
+		public bool CanJoin => !VersionMismatch.HasValue && !IsFull;
 
 
+		internal void CopyFrom(DiscoveredGame other)
+		{
+			GameInfo.CopyFrom(other.GameInfo);
 
-        /// <param name="messageForTiming">Used only for timing and source data, not read from</param>
-        private DiscoveredGame(NetIncomingMessage messageForTiming)
-        {
-            expireTime = messageForTiming.ReceiveTime + DiscoveryResponseTimeout;
-            EndPoint = messageForTiming.SenderEndPoint;
-            if(EndPoint == null)
-                throw new InvalidOperationException();
-        }
+			EndPoint = other.EndPoint;
+			expireTime = other.expireTime;
+			VersionMismatch = other.VersionMismatch;
+			IsFull = other.IsFull;
+			applicationData = other.applicationData; // <- assumed to be immutable
+		}
 
-        public static DiscoveredGame ReadFromDiscoveryResponse(NetworkAppConfig appConfig, NetIncomingMessage message)
-        {
-            try
-            {
-                // START: Version safe data
-                // {
+		public static DiscoveredGame FakeGame()
+		{
+			const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+			var random = new Random();
+			var name = new string(Enumerable.Repeat(chars, 14).Select(s => s[random.Next(s.Length)]).ToArray());
+			var game = new DiscoveredGame();
+			game.GameInfo = new GameInfo(name, false, false);
+			game.EndPoint = new IPEndPoint(IPAddress.Parse("255.255.255.255"), 65535);
+			game.IsFull = true;
+			return game;
+		}
 
-                string theirAppId = message.ReadString();
-                if(theirAppId != appConfig.AppId)
-                    return null; // Wrong application
+		internal static void WriteDiscoveryResponse(NetworkAppConfig appConfig, NetOutgoingMessage message,
+			GameInfo gameInfo, bool isFull, MemoryStream applicationData)
+		{
+			// START: Version safe data
+			// {
+			message.Write(appConfig.AppId);
+			message.Write(gameInfo.Name.FilterName());
+			message.Write(appConfig.ApplicationVersion);
+			message.WriteVariableUInt32((uint) appConfig.ApplicationSignature.Length);
+			message.Write(appConfig.ApplicationSignature);
+			// }
+			// END: Version safe data
 
-                string gameName = message.ReadString().FilterName();
+			message.Write(gameInfo.IsInternetGame);
+			message.Write(isFull);
+			message.WriteMemoryStreamAsByteArray(applicationData); // <- fill in for WriteByteArray
+		}
 
-                UInt16 theirAppVersion = message.ReadUInt16();
-                int theirAppSignatureLength = (int)message.ReadVariableUInt32();
-                
-                byte[] theirAppSignature;
-                if(theirAppSignatureLength < 0 || theirAppSignatureLength > NetworkAppConfig.ApplicationSignatureMaximumLength)
-                    theirAppSignature = null;
-                else
-                    theirAppSignature = message.ReadBytes(theirAppSignatureLength);
+		public static DiscoveredGame ReadFromDiscoveryResponse(NetworkAppConfig appConfig, NetIncomingMessage message)
+		{
+			try
+			{
+				// START: Version safe data
+				// {
 
-                // }
-                // END: Version safe data
+				var theirAppId = message.ReadString();
+				if (theirAppId != appConfig.AppId)
+					return null; // Wrong application
+
+				var gameName = message.ReadString().FilterName();
+
+				var theirAppVersion = message.ReadUInt16();
+				var theirAppSignatureLength = (int) message.ReadVariableUInt32();
+
+				byte[] theirAppSignature;
+				if (theirAppSignatureLength < 0 ||
+				    theirAppSignatureLength > NetworkAppConfig.ApplicationSignatureMaximumLength)
+					theirAppSignature = null;
+				else
+					theirAppSignature = message.ReadBytes(theirAppSignatureLength);
+
+				// }
+				// END: Version safe data
 
 
-                // Check for version mismatch
-                if(theirAppVersion != appConfig.ApplicationVersion || theirAppSignature == null || !appConfig.ApplicationSignature.SequenceEqual(theirAppSignature))
-                {
-                    GameInfo gi = new GameInfo(gameName);
-                    DiscoveredGame dg = new DiscoveredGame(messageForTiming: message);
-                    dg.GameInfo = gi;
+				// Check for version mismatch
+				if (theirAppVersion != appConfig.ApplicationVersion || theirAppSignature == null ||
+				    !appConfig.ApplicationSignature.SequenceEqual(theirAppSignature))
+				{
+					var gi = new GameInfo(gameName);
+					var dg = new DiscoveredGame(message);
+					dg.GameInfo = gi;
 
-                    if(theirAppVersion < appConfig.ApplicationVersion)
-                        dg.VersionMismatch = -1;
-                    else if(theirAppVersion > appConfig.ApplicationVersion)
-                        dg.VersionMismatch = 1;
-                    else
-                        dg.VersionMismatch = 0;
+					if (theirAppVersion < appConfig.ApplicationVersion)
+						dg.VersionMismatch = -1;
+					else if (theirAppVersion > appConfig.ApplicationVersion)
+						dg.VersionMismatch = 1;
+					else
+						dg.VersionMismatch = 0;
 
-                    Debug.Assert(dg.VersionMismatch.HasValue);
+					Debug.Assert(dg.VersionMismatch.HasValue);
 
-                    return dg;
-                }
+					return dg;
+				}
 
-                // If we get here, all the versioning is correct:
-                {
-                    bool isInternetGame = message.ReadBoolean();
-                    GameInfo gi = new GameInfo(gameName, isInternetGame, false); // <- NOTE: we are assuming that the side-channel handles discovery
+				// If we get here, all the versioning is correct:
+				{
+					var isInternetGame = message.ReadBoolean();
+					var gi = new GameInfo(gameName, isInternetGame,
+						false); // <- NOTE: we are assuming that the side-channel handles discovery
 
-                    DiscoveredGame dg = new DiscoveredGame(messageForTiming: message);
-                    dg.GameInfo = gi;
-                    dg.IsFull = message.ReadBoolean();
-                    dg.applicationData = message.ReadByteArray();
-                    return dg;
-                }
-            }
-            catch
-            {
-                return null;
-            }
-        }
-    }
+					var dg = new DiscoveredGame(message);
+					dg.GameInfo = gi;
+					dg.IsFull = message.ReadBoolean();
+					dg.applicationData = message.ReadByteArray();
+					return dg;
+				}
+			}
+			catch
+			{
+				return null;
+			}
+		}
+	}
 }
